@@ -1,0 +1,37 @@
+﻿@model TutesWebApp.Models.Tutorials
+
+@{
+    ViewData["Title"] = "TutorialDetails";
+    var item = Model;
+    var topics = ViewBag.TutorialTopics;
+}
+
+<h1>Tutorial Details</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="../../uploads/@item.TutorialID@item.ExtName" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">@item.TutorialTitle</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h3>Tutorial Tital : @item.TutorialTitle</h3>
+        <h3>Total Minutes : @item.Duration Minutes</h3>
+        <h5>Tutorial Description :</h5>
+        <p>@item.Description</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h1>Topics Details</h1>
+        <ol>
+            @foreach (var topic in topics)
+            {
+                <li>@topic.TopicName</li>
+            }
+        </ol>
+        </div>
+</div>

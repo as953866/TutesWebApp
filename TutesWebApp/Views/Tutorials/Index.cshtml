@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TutesWebApp.Models.Tutorials>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Tutorial Details</h1>
+
+<p>
+    <a asp-action="Create">Add New Tutorial</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorialTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TutorialTitle)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.TutorialID">Edit Tutorial Details</a> |
+                <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.TutorialID">View Full Details</a> |
+                <a asp-action="Delete" class="btn btn-primary" asp-route-id="@item.TutorialID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
